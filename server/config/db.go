@@ -13,7 +13,9 @@ import (
 var DB *mongo.Database
 
 func ConnectDB() {
-	client, err := mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_URI")))
+	client, err := mongo.NewClient(
+		options.Client().ApplyURI(os.Getenv("MONGO_URI")),
+	)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,6 +28,8 @@ func ConnectDB() {
 		log.Fatal(err)
 	}
 
+	// IMPORTANT: this creates reference to DB
 	DB = client.Database("guvi_task_manager")
-	log.Println("MongoDB Connected")
+
+	log.Println("MongoDB connected to database: guvi_task_manager")
 }
