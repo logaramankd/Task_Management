@@ -1,12 +1,22 @@
-import { useState } from 'react'
-import Auth from './pages/Auth';
-import Dashboard from './pages/Dashboard';
+import { Routes, Route, Navigate } from "react-router-dom";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
-
   const token = localStorage.getItem("token");
 
-  return token ? <Dashboard /> : <Auth />;
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={token ? <Navigate to="/dashboard" /> : <Auth />}
+      />
+      <Route
+        path="/dashboard"
+        element={token ? <Dashboard /> : <Navigate to="/" />}
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;

@@ -96,7 +96,7 @@ export default function Dashboard() {
               <button
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.reload();
+                  window.location.href='/';
                 }}
                 className="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
               >
