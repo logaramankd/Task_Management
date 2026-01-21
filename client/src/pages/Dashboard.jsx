@@ -52,6 +52,15 @@ export default function Dashboard() {
           close={() => setShowForm(false)}
         />
       )}
+      <button
+        onClick={() => {
+          localStorage.removeItem("token");
+          window.location.reload();
+        }}
+        className="px-4 py-2 bg-red-600 text-white rounded"
+      >
+        Logout
+      </button>
 
 
       {view === "list" ? (

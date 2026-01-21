@@ -3,13 +3,10 @@ import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <Dashboard />
-    </>
-  )
+  const token = localStorage.getItem("token");
+
+  return token ? <Dashboard /> : <Auth />;
 }
 
 export default App
