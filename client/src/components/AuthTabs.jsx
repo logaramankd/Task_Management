@@ -51,7 +51,7 @@ export default function AuthTabs({ type }) {
 
         if (res.token) {
           localStorage.setItem("token", res.token);
-          navigate("/dashboard");
+          window.location.reload();
         } else {
           alert("Login failed");
         }
