@@ -1,21 +1,11 @@
-const API_URL = "http://localhost:8080"; // later replace with Render URL
+import api from "./axiosIns";
 
 export const signupUser = async (data) => {
-  const res = await fetch(`${API_URL}/signup`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  return res.json();
+  const res = await api.post("/signup", data);
+  return res.data;
 };
 
 export const loginUser = async (data) => {
-  const res = await fetch(`${API_URL}/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  return res.json();
+  const res = await api.post("/login", data);
+  return res.data;
 };
