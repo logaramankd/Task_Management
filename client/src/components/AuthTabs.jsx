@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "./Button";
 import { loginUser, signupUser } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthTabs({ type }) {
   const [form, setForm] = useState({
@@ -9,6 +10,7 @@ export default function AuthTabs({ type }) {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
 
@@ -47,13 +49,13 @@ export default function AuthTabs({ type }) {
       } else {
         const res = await loginUser(form);
 
-        // ✅ FIXED LINE
         if (res.token) {
           localStorage.setItem("token", res.token);
-          window.location.href = "/dashboard";
+          navigate("/dashboard");
         } else {
           alert("Login failed");
         }
+
       }
     } catch (err) {
       alert("Invalid credentials or server error");
